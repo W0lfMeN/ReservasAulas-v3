@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package org.iesalandalus.programacion.reservasaulas.modelo.dao;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import java.util.ArrayList;
@@ -16,6 +23,7 @@ import java.util.List;
 public class Aulas {
     
     private List<Aula> coleccionAulas;
+    private static final String NOMBRE_FICHERO_AULAS="/ficheros/aulas.dat";
     
     public Aulas(){ //construcctor
         coleccionAulas=new ArrayList<Aula>(); //al comienzo no hay ningún alua
@@ -89,6 +97,41 @@ public class Aulas {
             representar.add(aula.toString());
         }
         return representar;
+    }
+    
+    public void leer() throws FileNotFoundException, IOException, ClassNotFoundException{
+        try{
+            Aula aula;
+            File fichero= new File(NOMBRE_FICHERO_AULAS);
+            FileInputStream fileIn= new FileInputStream(fichero);
+            ObjectInputStream dataIS= new ObjectInputStream(fileIn);
+        
+            try{
+                while(true){
+                    aula= (Aula) dataIS.readObject();
+                    coleccionAulas.add(aula);
+                }
+            }catch(IOException eo){
+            dataIS.close();
+            }
+        }catch(IOException | ClassNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void escribir() throws FileNotFoundException, IOException{
+        try{
+            File fichero= new File(NOMBRE_FICHERO_AULAS);
+            FileOutputStream fileOut= new FileOutputStream(fichero);
+            ObjectOutputStream dataOS= new ObjectOutputStream(fileOut);
+            
+            for(Aula aula: coleccionAulas){
+                dataOS.writeObject(aula);
+            }
+            dataOS.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
             
 }
