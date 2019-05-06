@@ -5,6 +5,13 @@
  */
 
 package org.iesalandalus.programacion.reservasaulas.modelo.dao;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Permanencia;
@@ -24,6 +31,7 @@ import java.util.List;
 public class Reservas {
     private List<Reserva> coleccionReservas;
     private static final float MAX_PUNTOS_PROFESOR_MES= 200;
+    private static final String NOMBRE_FICHERO_RESERVAS="/ficheros/reservas.dat";
     
     public Reservas(){ //construcctor
         coleccionReservas= new ArrayList<Reserva>(); 
@@ -210,6 +218,41 @@ public class Reservas {
             }
         }
         return true;
+    }
+    
+    public void leer() throws FileNotFoundException, IOException, ClassNotFoundException{
+        try{
+            Reserva reserva;
+            File fichero= new File(NOMBRE_FICHERO_RESERVAS);
+            FileInputStream fileIn= new FileInputStream(fichero);
+            ObjectInputStream dataIS= new ObjectInputStream(fileIn);
+        
+            try{
+                while(true){
+                    reserva= (Reserva) dataIS.readObject();
+                    coleccionReservas.add(reserva);
+                }
+            }catch(IOException eo){
+            dataIS.close();
+            }
+        }catch(IOException | ClassNotFoundException e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void escribir() throws FileNotFoundException, IOException{
+        try{
+            File fichero= new File(NOMBRE_FICHERO_RESERVAS);
+            FileOutputStream fileOut= new FileOutputStream(fichero);
+            ObjectOutputStream dataOS= new ObjectOutputStream(fileOut);
+            
+            for(Reserva reserva: coleccionReservas){
+                dataOS.writeObject(reserva);
+            }
+            dataOS.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     
 }
