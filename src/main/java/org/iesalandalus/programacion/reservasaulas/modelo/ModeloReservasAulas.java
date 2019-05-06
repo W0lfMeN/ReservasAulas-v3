@@ -6,6 +6,7 @@
  */
 
 package org.iesalandalus.programacion.reservasaulas.modelo;
+import java.io.IOException;
 import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.reservasaulas.modelo.dao.Aulas;
 import org.iesalandalus.programacion.reservasaulas.modelo.dao.Profesores;
@@ -144,5 +145,65 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
     
     public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia){
         return reservas.consultarDisponibilidad(aula, permanencia);
+    }
+
+    @Override
+    public void leerAulas() {
+        try {
+            aulas.leer();
+        } catch (IOException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void escribirAulas() {
+        try {
+            aulas.escribir();
+        } catch (IOException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void leerProfesores() {
+        try {
+            profesores.leer();
+        } catch (IOException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void escribirProfesores() {
+        try {
+            profesores.escribir();
+        } catch (IOException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void leerReservas() {
+        try {
+            reservas.leer();
+        } catch (IOException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void escribirReservas() {
+        try {
+            reservas.escribir();
+        } catch (IOException ex) {
+            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -29,6 +29,10 @@ public interface IModeloReservasAulas {
     
     public void borrarAula(Aula aula);
     
+    public void leerAulas();
+    
+    public void escribirAulas();
+    
     public List<Profesor> getProfesores();
     
     public int getNumProfesores();
@@ -40,6 +44,10 @@ public interface IModeloReservasAulas {
     public void insertarProfesor(Profesor insertar);
     
     public void borrarProfesor(Profesor profesor);
+    
+    public void leerProfesores();
+    
+    public void escribirProfesores();
     
     public List<Reserva> getReservas();
     
@@ -60,4 +68,8 @@ public interface IModeloReservasAulas {
     public List<Reserva> getReservasPermanencia(Permanencia permanencia);
     
     public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
+    
+    public void leerReservas();
+    
+    public void escribirReservas();
 }
