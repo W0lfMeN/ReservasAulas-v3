@@ -35,22 +35,27 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         this.aulas=new Aulas();
     }
     
+    @Override
     public List<Aula> getAulas(){
         return aulas.getAulas();
     }
     
+    @Override
     public int getNumAulas(){
         return aulas.getNumAulas();
     }
     
+    @Override
     public List<String> representarAulas(){
         return aulas.representar();
     }
     
+    @Override
     public Aula buscarAula(Aula buscar){
         return aulas.buscar(buscar);
     }
     
+    @Override
     public void insertarAula(Aula insertar) {
         try {
             aulas.insertar(insertar);
@@ -59,6 +64,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         }
     }
     
+    @Override
     public void borrarAula(Aula borrar) {
         try {
             aulas.borrar(borrar);
@@ -67,22 +73,27 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         }
     }
     
+    @Override
     public List<Profesor> getProfesores(){
         return profesores.getProfesores();
     }
     
+    @Override
     public int getNumProfesores(){
         return profesores.getNumProfesores();
     }
     
+    @Override
     public List<String> representarProfesores(){
         return profesores.representar();
     }
     
+    @Override
     public Profesor buscarProfesor(Profesor buscar){
         return profesores.buscar(buscar);
     }
     
+    @Override
     public void insertarProfesor(Profesor insertar) {
         try {
             profesores.insertar(insertar);
@@ -91,6 +102,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         }
     }
     
+    @Override
     public void borrarProfesor(Profesor borrar) {
         try {
             profesores.borrar(borrar);
@@ -99,22 +111,27 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         }
     }
     
+    @Override
     public List<Reserva> getReservas(){
         return reservas.getReservas();
     }
     
+    @Override
     public int getNumReservas(){
         return reservas.getNumReservas();
     }
     
+    @Override
     public List<String> representarReservas(){
         return reservas.representar();
     }
     
+    @Override
     public Reserva buscarReserva(Reserva buscar){
         return reservas.buscar(buscar);
     }
     
+    @Override
     public void realizarReserva(Reserva insertar) {
         try {
             reservas.insertar(insertar);
@@ -123,6 +140,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         }
     }
     
+    @Override
     public void anularReserva(Reserva borrar){
         try {
             reservas.borrar(borrar);
@@ -131,18 +149,22 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
         }
     }
     
+    @Override
     public List<Reserva> getReservasAula(Aula aula){
         return reservas.getReservasAula(aula);
     }
     
+    @Override
     public List<Reserva> getReservasProfesor(Profesor profesor){
         return reservas.getReservasProfesor(profesor);
     }
     
+    @Override
     public List<Reserva> getReservasPermanencia(Permanencia permanencia){
         return reservas.getReservasPermanencia(permanencia);
     }
     
+    @Override
     public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia){
         return reservas.consultarDisponibilidad(aula, permanencia);
     }
@@ -151,9 +173,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
     public void leerAulas() {
         try {
             aulas.leer();
-        } catch (IOException ex) {
-            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -171,9 +191,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
     public void leerProfesores() {
         try {
             profesores.leer();
-        } catch (IOException ex) {
-            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -191,9 +209,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
     public void leerReservas() {
         try {
             reservas.leer();
-        } catch (IOException ex) {
-            Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(ModeloReservasAulas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

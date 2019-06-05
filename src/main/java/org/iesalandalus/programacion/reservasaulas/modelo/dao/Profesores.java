@@ -59,7 +59,7 @@ public class Profesores {
         return copia;
     }
     
-    public void insertar(Profesor profesor) throws OperationNotSupportedException {
+    public void insertar(Profesor profesor) throws OperationNotSupportedException, IllegalArgumentException {
         if(profesor==null){
             throw new IllegalArgumentException("No se puede insertar un profesor nulo.");
         }

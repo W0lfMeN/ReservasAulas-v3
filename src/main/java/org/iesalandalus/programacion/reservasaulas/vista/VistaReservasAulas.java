@@ -49,7 +49,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             Aula aula=Consola.leerAula();
             controlador.insertarAula(aula);
             System.out.println("Aula insertada");
-        }catch (IllegalArgumentException e){
+        }catch (NullPointerException |IllegalArgumentException e){
             System.out.println(ERROR +e.getMessage());
         }
     }
@@ -60,7 +60,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             Aula aula= Consola.leerAula();
             controlador.borrarAula(aula);
             System.out.println("Aula borrada");
-        }catch (IllegalArgumentException e){
+        }catch (NullPointerException |IllegalArgumentException e){
             System.out.println(ERROR + e.getMessage());
         }
     }
@@ -76,7 +76,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             }else{
                 System.out.println("El aula buscada es: "+ aula);
             }
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException |NullPointerException e){
             System.out.println(ERROR + e.getMessage());
         }
     }
@@ -101,7 +101,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             Profesor profesor=Consola.leerProfesor();
             controlador.insertarProfesor(profesor);
             System.out.println("profesor insertado");
-        }catch (IllegalArgumentException e){
+        }catch (IllegalArgumentException |NullPointerException e){
             System.out.println(ERROR +e.getMessage());
         }
     }
@@ -112,7 +112,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             Profesor profesor= new Profesor (Consola.leerNombreProfesor(), CORREO_VALIDO);
             controlador.borrarProfesor(profesor);
             System.out.println("profesor borrado");
-        }catch (IllegalArgumentException e){
+        }catch (IllegalArgumentException |NullPointerException e){
             System.out.println(ERROR + e.getMessage());
         }
     }
@@ -129,7 +129,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             }else{
                 System.out.println("El profesor buscado es: "+ profesor);
             }
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException | NullPointerException e){
             System.out.println(ERROR + e.getMessage());
         }
     }
@@ -144,7 +144,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
                     System.out.println(profesores);
                 }
             }
-        }catch(NullPointerException e){
+        }catch(NullPointerException |IllegalArgumentException e){
             System.out.println("No hay profesores");
         }
     }
@@ -159,7 +159,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
             Reserva reserva= leerReserva(profesor);
             controlador.realizarReserva(reserva);
             System.out.println("Reserva realizada");
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException | NullPointerException e){
             System.out.println(ERROR + e.getMessage());
         }
     }
@@ -175,7 +175,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
         try{
             controlador.anularReserva(reserva);
             System.out.println("Reserva anulada");
-        }catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException |NullPointerException e){
             System.out.println(ERROR + e.getMessage());
         }
     }
@@ -189,7 +189,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
                     System.out.println(reserva);
                 }
             }
-        }catch(NullPointerException e){
+        }catch(NullPointerException | IllegalArgumentException e){
             System.out.println("No hay reservas");
         }
     }

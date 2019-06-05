@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
-import java.time.Month;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.PermanenciaPorHora;
